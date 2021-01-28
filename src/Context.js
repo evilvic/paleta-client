@@ -137,6 +137,7 @@ class MyProvider extends Component {
         const { username, password } = this.state.formLogin
         AUTH_SERVICE.login({ username, password })
             .then(({ data }) => {
+                console.log(data)
                 this.setState(prevState => ({
                     ...prevState,
                     formLogin: {

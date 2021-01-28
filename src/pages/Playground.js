@@ -364,6 +364,7 @@ class Playground extends Component {
     componentDidMount () {
         AUTH_SERVICE.getUser()
         .then(({ data }) => {
+            console.log('playground mount', data)
             this.setState(prevState => ({
                 ...prevState,
                 loggedUser: data.user

@@ -7,6 +7,7 @@ const Profile = ({ history }) => {
     const context = useContext(MyContext)
 
     useEffect(() => {
+        console.log(context.state.isLoggedIn)
         if (!context.state.isLoggedIn) return history.push('/login')
         context.updateGallery()
     }, [context, history])
