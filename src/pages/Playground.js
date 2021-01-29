@@ -331,7 +331,7 @@ class Playground extends Component {
         const canvas = this.refs.canvas
         const photoUrl = canvas.toDataURL("image/png")
 
-        const { title } = this.state
+        const { title, loggedUser: user } = this.state
 
         const {
             input0, input1, input2, input3, input4, input5, input6, input7, input8, input9,
@@ -342,6 +342,7 @@ class Playground extends Component {
         } = this.state.commands
 
         await PROJECTS_SERVICE.create({
+            user,
             title,
             photoUrl,
             input0, input1, input2, input3, input4, input5, input6, input7, input8, input9,
@@ -365,6 +366,7 @@ class Playground extends Component {
 
     componentDidMount () {
       const { loggedUser: user } = this.context.state
+      console.log(user)
       this.setState(prevState => ({
         ...prevState,
         loggedUser: user
