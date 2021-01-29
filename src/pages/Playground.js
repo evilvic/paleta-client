@@ -3,9 +3,12 @@ import { Container, CodeEditor, Canvas, Title, Menu, StyledInfo } from '../style
 import AUTH_SERVICE from '../services/auth'
 import PROJECTS_SERVICE from '../services/project'
 import Swal from 'sweetalert2'
+import { MyContext } from '../Context'
 
 
 class Playground extends Component {
+
+  static contextType = MyContext
 
     state = {
         title: '',
@@ -362,18 +365,11 @@ class Playground extends Component {
     }
 
     componentDidMount () {
-        AUTH_SERVICE.getUser()
-        .then(({ data }) => {
-            console.log('playground mount', data)
-            this.setState(prevState => ({
-                ...prevState,
-                loggedUser: data.user
-            }))
-        })
-        .catch(() => {
-            console.log('Somethinmg went wrong...')
-        })
-        
+      const { loggedUser: user } = this.context.state
+      this.setState(prevState => ({
+        ...prevState,
+        loggedUser: user
+      }))
     }
 
     render() {
