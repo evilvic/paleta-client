@@ -63,11 +63,12 @@ class MyProvider extends Component {
     handleCommentSubmit = async e => {
 
         e.preventDefault()
-        const { artComment, art} = this.state
+        const { artComment, art, loggedUser} = this.state
 
         console.log(artComment, art._id)
 
         await COMMENTS_SERVICE.create({
+            user: loggedUser,
             content: artComment,
             project: art._id
         })
