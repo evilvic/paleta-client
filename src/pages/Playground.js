@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Container, CodeEditor, Canvas, Title, Menu, StyledInfo } from '../style/components'
-import AUTH_SERVICE from '../services/auth'
 import PROJECTS_SERVICE from '../services/project'
 import Swal from 'sweetalert2'
 import { MyContext } from '../Context'
